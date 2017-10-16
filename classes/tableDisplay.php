@@ -5,7 +5,6 @@
             while (!feof($csvFile) ) {
                 $lineText[] = fgetcsv($csvFile);
             }
-            print_r($lineText);
             if (!empty($lineText)) {
                 $this->html .= htmlTags::backButton('Back');
                 $this->html .= htmlTags::tableHead('displayTable');

@@ -97,11 +97,11 @@
                     $this->html .= htmlTags::tableLineStart();
                     if ($line == 0 ) {
                         foreach ($value as $text) {
-                            $this->html .= htmlTags::tableTitle($value);
+                            $this->html .= htmlTags::tableTitle($text);
                         }
                     } else {
                         foreach ($value as $text) {
-                            $this->html .= htmlTags::tableDetail($value);
+                            $this->html .= htmlTags::tableDetail($text);
                         }
                     }
                     $this->html .= htmlTags::tableLineEnd();

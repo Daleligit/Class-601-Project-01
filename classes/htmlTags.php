@@ -39,6 +39,7 @@
         static public function tableEnd() {
             return '</table>';
         }
+        //Set two buttons here, they can be used in different pages in different ways
         static public function backButton($input) {
             return '<input type="button" onclick="javascript:history.back(-1);" value="' . $input . '">';
         }

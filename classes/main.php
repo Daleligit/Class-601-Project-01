@@ -1,6 +1,7 @@
 <?php
     class main {
         public function __construct() {
+            //Set default page as homepage
             $pageRequest = 'homepage';
             if (isset($_REQUEST['page'])) {
                 $pageRequest = $_REQUEST['page'];

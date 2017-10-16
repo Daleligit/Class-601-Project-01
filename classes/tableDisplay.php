@@ -6,6 +6,7 @@
                 $lineText[] = fgetcsv($csvFile);
             }
             if (!empty($lineText)) {
+                $this->html .= htmlTags::backButton('Back');
                 $this->html .= htmlTags::tableHead('displayTable');
                 foreach ($lineText as $line => $value) {
                     $this->html .= htmlTags::tableLineStart();
@@ -22,7 +23,8 @@
                 }
                 $this->html .= htmlTags::tableEnd();
             } else {
-                $this->html .= htmlTags::changeRow('This is an empyt CSV file');
+                $this->html .= htmlTags::changeRow('This is an empty CSV file');
+                $this->html .= htmlTags::backButton('Back');
             }
         }
     }

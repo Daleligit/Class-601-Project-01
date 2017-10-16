@@ -21,5 +21,23 @@
         static public function bodyEnd() {
             return '</body>';
         }
+        static public function tableHead($name) {
+            return '<table id=' . $name . '>';
+        }
+        static public function tableLineStart() {
+            return '<tr>';
+        }
+        static public function tableLineEnd() {
+            return '</tr>';
+        }
+        static public function tableTitle($input) {
+            return '<th>' . $input . '</th>';
+        }
+        static public function tableDetail($input) {
+            return '<td>' . $input . '</td>';
+        }
+        static public function tableEnd() {
+            return '</table>';
+        }
     }
 ?>

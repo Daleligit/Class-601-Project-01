@@ -63,24 +63,23 @@
             if(isset($_POST["submit"])) {
                 $check = stringFunctions::stringCompare(strtolower($fileType),'csv');
                 if($check == 0) {
-                    echo "File is a CSV file";
                     $uploadOk = 1;
                 } else {
-                    echo "File is not a CSV file.";
+                    $this->html .= htmlTags::changeRow('Sorry, file is not a CSV file');;
                     $uploadOk = 0;
                 }
             }
             if (file_exists($target_file)) {
-                echo "Sorry, file already exists.";
+                $this->html .= htmlTags::changeRow('Sorry, file already exists.');
                 $uploadOk = 0;
             }
             if ($uploadOk == 0) {
-                echo "Sorry, your file was not uploaded.";
+                $this->html .= htmlTags::changeRow('Your file was not uploaded.');
             } else {
                 if (move_uploaded_file($_FILES["uploadCSVFiles"]["tmp_name"], $target_file)) {
-                    echo "The file " . basename($_FILES["uploadCSVFiles"]["name"]) . " has been uploaded.";
+
                 } else {
-                    echo "Sorry, there was an error uploading your file.";
+                    $this->html .= htmlTags::changeRow('Sorry, there was an error uploading your file.');
                 }
             }
         }

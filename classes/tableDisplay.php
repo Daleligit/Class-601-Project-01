@@ -5,19 +5,19 @@
             while (!feof($csvFile) ) {
                 $lineText[] = fgetcsv($csvFile);
             }
-            if (!empty($lineText)) {
+            $lineText_check = arrayFunctions::arrayEnd($lineText);
+            $key = arrayFunctions::arrayKey($lineText_check);
+            if ($key != 0 || $lineText[$key] != NULL) {
                 $this->html .= htmlTags::backButton('Back');
                 $this->html .= htmlTags::tableHead('displayTable');
-                $lineText_check = arrayFunctions::arrayEnd($lineText);
-                $key = arrayFunctions::arrayKey($lineText_check);
                 foreach ($lineText as $line => $value) {
                     $this->html .= htmlTags::tableLineStart();
-                    if ($line != $key || $value != NULL) {
-                        if ($line == 0 ) {
-                            foreach ($value as $text) {
-                                $this->html .= htmlTags::tableTitle($text);
-                            }
-                        } else {
+                    if ($line == 0 ) {
+                        foreach ($value as $text) {
+                            $this->html .= htmlTags::tableTitle($text);
+                        }
+                    } else {
+                        if ($line != $key || $value != NULL) {
                             foreach ($value as $text) {
                                 $this->html .= htmlTags::tableDetail($text);
                             }
@@ -27,8 +27,8 @@
                 }
                 $this->html .= htmlTags::tableEnd();
             } else {
-                $this->html .= htmlTags::changeRow('This is an empty CSV file');
                 $this->html .= htmlTags::backButton('Back');
+                $this->html .= htmlTags::changeRow('This is an empty CSV file');
             }
         }
     }

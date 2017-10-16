@@ -5,7 +5,7 @@
 
     class Manage {
         static public function autoload($class) {
-            include './class' . $class . '.php';
+            include 'class/' . $class . '.php';
         }
     }
 
@@ -15,7 +15,7 @@
 
     class main {
         public function __construct() {
-            $pageRequest = 'homepage';
+            $pageRequest = 'uploadForm';
             if (isset($_REQUEST['page'])) {
                 $pageRequest = $_REQUEST['page'];
             }
@@ -43,11 +43,33 @@
             $this->html .= htmlTags::htmlEnd();
             stringFunctions::printThis($this->html);
         }
-        public function get() {
+    }
 
+    class uploadForm extends page {
+        public function get() {
+            $form =  '<form action="index.php?page=uploadForm" method="post"
+	enctype="multipart/form-data">';
+            $form .= '<input type="file" name="uploadCSVFiles" id="uploadCSVFiles">';
+            $form .= '<input type="submit" value="Upload CSV Files" name="submit">';
+            $form .= '</form>';
+            $this->html .= htmlTags::headingOne('Upload Form');
+            $this->html .= $form;
         }
         public function post() {
-
+            $target_dir = "uploads/";
+            $target_file = $target_dir . basename($_FILES["uploadCSVFiles"]["name"]);
+            $uploadOk = 1;
+            $fileType = pathinfo($target_file,PATHINFO_EXTENSION);
+            if(isset($_POST["submit"])) {
+                $check = stringFunctions::stringCompare(strtolower($fileType),'csv');
+                if($check != 0) {
+                    echo "File is a CSV file";
+                    $uploadOk = 1;
+                } else {
+                    echo "File is not a CSV file.";
+                    $uploadOk = 0;
+                }
+            }
         }
     }
 

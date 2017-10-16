@@ -42,5 +42,8 @@
         static public function backButton($input) {
             return '<input type="button" onclick="javascript:history.back(-1);" value="' . $input . '">';
         }
+        static public function turnPage($phpName, $input) {
+            return '<input type="button" onclick="location.href=\'' .$phpName . '\'" value="' . $input . '">';
+       }
     }
 ?>

@@ -1,7 +1,7 @@
 <?php
     class main {
         public function __construct() {
-            $pageRequest = 'uploadForm';
+            $pageRequest = 'homepage';
             if (isset($_REQUEST['page'])) {
                 $pageRequest = $_REQUEST['page'];
             }

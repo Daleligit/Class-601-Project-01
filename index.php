@@ -77,7 +77,7 @@
                 $this->html .= htmlTags::changeRow('Your file was not uploaded.');
             } else {
                 if (move_uploaded_file($_FILES["uploadCSVFiles"]["tmp_name"], $target_file)) {
-
+                    header('Location: index.php?page=tableDisplay&filename=' . $_FILES["uploadCSVFiles"]["name"]);
                 } else {
                     $this->html .= htmlTags::changeRow('Sorry, there was an error uploading your file.');
                 }
@@ -85,4 +85,31 @@
         }
     }
 
+    class tableDisplay extends page {
+        public function get() {
+            $csvFile = fopen('./uploads/' . $_GET['filename'], 'r');
+            while (!feof($csvFile) ) {
+                $lineText[] = fgetcsv($csvFile);
+            }
+            if (!empty($lineText)) {
+                $this->html .= htmlTags::tableHead('displayTable');
+                foreach ($lineText as $line => $value) {
+                    $this->html .= htmlTags::tableLineStart();
+                    if ($line == 0 ) {
+                        foreach ($value as $text) {
+                            $this->html .= htmlTags::tableTitle($value);
+                        }
+                    } else {
+                        foreach ($value as $text) {
+                            $this->html .= htmlTags::tableDetail($value);
+                        }
+                    }
+                    $this->html .= htmlTags::tableLineEnd();
+                }
+                $this->html .= htmlTags::tableEnd();
+            } else {
+                $this->html .= htmlTags::changeRow('This is an empyt CSV file');
+            }
+        }
+    }
 ?>

@@ -39,5 +39,8 @@
         static public function tableEnd() {
             return '</table>';
         }
+        static public function backButton($input) {
+            return '<input type="button" name="Submit" onclick="javascript:history.back(-1);" value="' . $input . '">';
+        }
     }
 ?>

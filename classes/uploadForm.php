@@ -29,15 +29,18 @@
                 }
                 if ($uploadOk == 0) {
                     $this->html .= htmlTags::changeRow('Your file was not uploaded.');
+                    $this->html .= htmlTags::backButton('Back');
                 } else {
                     if (move_uploaded_file($_FILES["uploadCSVFiles"]["tmp_name"], $target_file)) {
                         header('Location: index.php?page=tableDisplay&filename=' . $_FILES["uploadCSVFiles"]["name"]);
                     } else {
                         $this->html .= htmlTags::changeRow('Sorry, there was an error uploading your file.');
+                        $this->html .= htmlTags::backButton('Back');
                     }
                 }
             } else {
                 $this->html .= htmlTags::changeRow('Please choose a file to upload');
+                $this->html .= htmlTags::backButton('Back');
             }
         }
     }

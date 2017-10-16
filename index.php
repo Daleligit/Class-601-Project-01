@@ -5,7 +5,7 @@
 
     class Manage {
         static public function autoload($class) {
-            include 'class/' . $class . '.php';
+            include './classes/' . $class . '.php';
         }
     }
 

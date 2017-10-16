@@ -8,6 +8,7 @@
             $form .= '</form>';
             $this->html .= htmlTags::headingOne('Upload Form');
             $this->html .= $form;
+            $this->html .= htmlTags::backButton('Back');
     }
         public function post() {
             //Set upload directory

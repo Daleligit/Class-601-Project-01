@@ -6,7 +6,8 @@
             $form .= '<input type="file" name="uploadCSVFiles" id="uploadCSVFiles">';
             $form .= '<input type="submit" value="Upload CSV Files" name="submit">';
             $form .= '</form>';
-            $this->html .= htmlTags::headingOne('Upload Form');
+            $this->html .= htmlTags::changeRow(htmlTags::headingOne('Upload Form'));
+            $this->html .= htmlTags::changeRow('Please upload your CSV file here:');
             $this->html .= $form;
             $this->html .= htmlTags::backButton('Back');
     }

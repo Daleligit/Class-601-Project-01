@@ -9,7 +9,7 @@
             $this->html .= htmlTags::headingOne('Upload Form');
             $this->html .= htmlTags::changeRow('Please upload your CSV file here:');
             $this->html .= $form;
-            $this->html .= htmlTags::backButton('Back');
+            $this->html .= htmlTags::turnPage('index.php','Back');
     }
         public function post() {
             //Set upload directory
@@ -38,7 +38,7 @@
                 //Use the upload state marker to make decision if the web page needs to do the upload.
                 if ($uploadOk == 0) {
                     $this->html .= htmlTags::changeRow('Your file was not uploaded.');
-                    $this->html .= htmlTags::backButton('Back');
+                    $this->html .= htmlTags::turnPage('index.php?page=uploadForm','Back');
                 } else {
                     //upload file
                     if (move_uploaded_file($_FILES["uploadCSVFiles"]["tmp_name"], $target_file)) {
@@ -47,13 +47,13 @@
                     } else {
                         //Uploaded failed with some problem
                         $this->html .= htmlTags::changeRow('Sorry, there was an error uploading your file.');
-                        $this->html .= htmlTags::backButton('Back');
+                        $this->html .= htmlTags::turnPage('index.php?page=uploadForm','Back');
                     }
                 }
             } else {
                 //Check if the use choose a file to upload.
                 $this->html .= htmlTags::changeRow('Please choose a file to upload');
-                $this->html .= htmlTags::backButton('Back');
+                $this->html .= htmlTags::turnPage('index.php?page=uploadForm','Back');
             }
         }
     }

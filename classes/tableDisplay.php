@@ -11,7 +11,7 @@
             //The marker to check if there is an output in the table about the data in CSV file.
             //This is to check if the CSV file is empty.
             $printCheck = 0;
-            $this->html .= htmlTags::backButton('Back');
+            $this->html .= htmlTags::turnPage('index.php?page=uploadForm','Back');
             $this->html .= htmlTags::tableHead('displayTable');
             foreach ($lineText as $line => $value) {
                 //Check the line if it is empty

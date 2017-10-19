@@ -33,12 +33,14 @@
                     if ($line == $tableTitle ) {
                         foreach ($value as $text) {
                             //Title line output
-                            $this->html .= htmlTags::tableTitle($text);
+                            //Tried to use trim function to clean the space in order to make table looks better
+                            $this->html .= htmlTags::tableTitle(stringFunctions::stringTrim($text));
                         }
                     } else {
                         foreach ($value as $text) {
                             //Normal line output
-                            $this->html .= htmlTags::tableDetail($text);
+                            //Tried to use trim function to clean the space in order to make table looks better
+                            $this->html .= htmlTags::tableDetail(stringFunctions::stringTrim($text));
                         }
                     }
                     $this->html .= htmlTags::tableLineEnd();

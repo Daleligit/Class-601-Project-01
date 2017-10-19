@@ -44,9 +44,9 @@
          * to make sure the button can bring the user to the right page not based on their
          * view history.
         */
-        static public function backButton($input) {
-            return '<input type="button" onclick="javascript:history.back(-1);" value="' . $input . '">';
-        }
+        //static public function backButton($input) {
+        //    return '<input type="button" onclick="javascript:history.back(-1);" value="' . $input . '">';
+        //}
         static public function turnPage($pageName, $input) {
             return '<input type="button" onclick="location.href=\'' .$pageName . '\'" value="' . $input . '">';
        }

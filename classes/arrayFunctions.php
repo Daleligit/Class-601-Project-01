@@ -5,12 +5,13 @@
          * way to do that. So they are useless now, just leave here in care
          * that I may use them in the future commits.
          */
-        static public function arrayEnd($array) {
+        /*static public function arrayEnd($array) {
             end($array);
             return $array;
         }
         static public function arrayKey($array) {
             return key($array);
         }
+        */
     }
 ?>

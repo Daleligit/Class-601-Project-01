@@ -18,7 +18,7 @@
                 $test = 0;
                 if (!empty($value)){
                     foreach ($value as $textTest) {
-                        if (!empty($textTest) && !empty(stringFunctions::stringTrim($textTest))){
+                        if (!empty(stringFunctions::stringTrim($textTest))){
                             $test = 1;
                             break;
                         }
